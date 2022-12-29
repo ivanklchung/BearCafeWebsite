@@ -1,0 +1,1389 @@
+/*
+
+   IC Bear Style Sheet
+   Author: Ivan Chung   
+   Date: November 22, 2022
+
+   Filename: styles.css
+   
+*/
+
+/* Intial Styles */
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    outline: none;
+    text-decoration: none;
+    list-style-type: none;
+    font-family: 'Roboto', sans-serif;
+}
+
+/* 1 rem == 10px */
+/* https://www.aleksandrhovhannisyan.com/blog/62-5-percent-font-size-trick/ */
+html{
+    font-size: 62.5%;
+}
+
+body{
+    min-width: 375px;
+}
+/* Navigation Bar Styles */
+.navigationbar{
+    width: 100%;
+    height:7rem;
+    background-color: rgba(8, 72, 8, 0.938);
+    position: fixed;
+    top:-5rem;
+    padding:3rem;
+    z-index:10;
+    transition:height 1s;
+    animation: navdrop 2s 0.6s forwards;
+}
+
+/* Drop down navigation menu animation */
+@keyframes navdrop{
+    0%{
+        top:-5rem;
+    }
+    100%{
+        top:0rem;
+    }
+}
+
+.navigationbar.change{
+    height:100vh;
+}
+
+.logo{
+    position:absolute;
+    top: 1.5rem;
+    left: 5rem;
+}
+
+.logo span{
+    font-family: 'Times New Roman', Times, serif;
+    font-size:3rem;
+    font-weight:bold;
+    color:rgb(249, 149, 72);
+    letter-spacing: 0.3em;
+}
+
+
+.navigation-list{
+    position:absolute;
+    display:flex;
+    flex-direction:column;
+    top:5%;
+    left:50%;
+    transform:translateX(-50%);
+    align-items: center; 
+    opacity:0;
+    visibility: hidden;
+    transition: all 0.1s;
+}
+
+.change .navigation-list{
+    opacity: 1;
+    visibility: visible;
+    transition: all 0.5s 0.9s;
+  }
+
+.navigation-link{
+    font-size: 5rem;
+    font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-weight: bold;
+    color:rgba(245, 245, 245, 0.981);
+    letter-spacing: 0.5rem;
+    margin:1rem 0;
+}  
+
+.navigation-link:last-of-type{
+    color:rgb(64, 8, 8);
+}
+
+.navigation-link:first-of-type{
+    color:rgb(227, 189, 36);
+}
+
+.navigation-link:hover{
+    text-transform: uppercase;
+    background-image: linear-gradient(
+      -225deg,
+      #075008 0%,
+      #068504 25%,
+      #27ad4b 75%,
+      #075008 100%
+    );
+
+    color: rgb(255, 255, 255);
+    background-size: auto auto;
+    background-size: 250% auto;
+    
+    animation: greenrainbow 3s infinite;
+    font-size: 5rem;
+}
+
+
+/* Highlight animation turn green */
+@keyframes greenrainbow {
+    to {
+      background-position: 100% center;
+    }
+  }
+
+/*All Grand Opening links are background brown */
+a[href^="opening"] {
+    background-color: brown;
+}
+
+.reference-link{
+    font-size: 6rem;
+    font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-weight: bold;
+    color:rgba(245, 245, 245, 0.981);
+    letter-spacing: 0.5rem;
+    margin:1rem 0;
+}  
+
+/* Menu Styles */
+.menu{
+    width: 5rem;
+    height: 5rem;
+    position: fixed;
+    z-index: 50;
+    top: 1rem;
+    right: 2rem;
+    display:flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    cursor: pointer;
+}
+
+.line{
+    width:100%;
+    height: 0.2rem;
+    background-color: rgb(238, 238, 238);
+    transition: transform 0.5s;
+}
+
+/* Initial: Menu Bar */
+/* Change to arrow bar via Transform */
+.line-1{
+    width:50%;
+}
+
+.line-2{
+    width:100%;
+}
+
+.line-3{
+    width:50%;
+}
+
+.change .line-1{
+    transform: translate(100%,1rem)rotate(35deg);
+    transform-origin:right;
+}
+.change .line-2{
+    width:100%;
+}
+
+.change .line-3{
+    margin-left: auto;
+    transform: translateY(-1rem)rotate(-35deg);
+    transform-origin: right;
+}
+
+
+/* Home Section Styles */
+.section-home{
+    height:120vh;
+    width:100%;
+    background:url(img/landingBear.jpg)no-repeat;
+    background-size: cover;
+    position:relative;
+}
+
+.giflogo{
+    width: 100%;
+    position:absolute;
+    top: 15%;
+    left: 50%;
+    transform: translate(-50%);
+    text-align: center;
+}
+
+.giflogo img{
+    border-radius: 5rem;
+    margin-bottom: 1rem;
+}
+
+.slideshow{
+    width: 100%;
+    position:absolute;
+    top: 20%;
+    left: 50%;
+    transform: translate(-50%);
+    text-align: center;
+}
+
+.slideshow-heading{
+    margin-top:15rem;
+    height: 20rem;
+    /*3D environment*/
+    perspective: 50rem;
+    overflow:hidden;
+}
+
+.slideshow-heading span{
+    font-family: 'Oswald, sans-serif';
+    font-size:10rem;
+    font-weight:400;
+    color:rgb(255, 255, 255);
+    text-transform: uppercase;
+    text-shadow: 0.2rem, 0.2rem, 0.8rem rgba(218, 139, 129, 0.374);
+    position:absolute;
+    width:100%;
+    display:flex;
+    justify-content: center;
+    transform:translateZ(8rem);
+    opacity:0;
+    letter-spacing: 3rem;
+}
+
+/* slideshow animation */
+@keyframes animateSlideShow {
+    0%{
+        transform:translateZ(8rem);
+        opacity:0;
+        letter-spacing: 3rem;
+    }
+    3%{
+        transform:translateZ(0);
+        opacity:1;
+        letter-spacing: 1.5rem;
+    }
+    20%{
+        transform:translateZ(0);
+        opacity:1;
+        letter-spacing: 1.5rem;
+    }
+    50%{
+        transform:translateZ(8rem);
+        opacity:0;
+        letter-spacing: 3rem;
+    }
+    100%
+    {
+        transform:translateZ(8rem);
+        opacity:0;
+        letter-spacing: 3rem;
+    }
+    
+}
+
+.heading-1{
+    animation:animateSlideShow 10s 2.5s infinite;
+}
+.heading-2{
+    animation:animateSlideShow 10s 5s infinite;
+}
+.heading-3{
+    animation:animateSlideShow 10s 7.5s infinite;
+}
+.heading-4{
+    animation:animateSlideShow 10s 10s infinite;
+}
+
+/* Description paragraph stacked */
+.slideshow-paragraph, .slideshow-paragraph2, .slideshow-paragraph3{
+    font-size: 1rem;
+    font-weight:bold;
+    text-transform: uppercase;
+    color:rgb(240, 248, 255);
+    width: 30%;
+    margin:0 auto 2rem auto;
+    padding: 1rem 0;
+    opacity:0;
+    visibility: hidden;
+    animation: fadeAnimation 1s 1.5s forwards;
+}
+
+.slideshow-paragraph::first-letter,
+.slideshow-paragraph2::first-letter{
+    font-size:5rem;
+    color:rgb(238, 140, 42);
+}
+
+.slideshow-paragraph3::first-letter{
+    font-size:5rem;
+    color:rgb(255, 125, 69);
+}
+
+/* Fading Animation*/
+
+@keyframes fadeAnimation{
+    0%{
+        opacity: 0;
+        visibility:visible;
+        font-size: 0.5rem;
+    }
+    100%{
+        opacity: 1;
+        visibility: visible;
+        font-size: 2.5rem;
+    }
+}
+
+.slideshow-button{
+    width:30rem;
+    height:6rem;
+    color:whitesmoke;
+    background:linear-gradient(to right, #450202, #f3851fd7);
+    font-size: 3rem;
+    border-radius: 5rem;
+    border: 0.6rem solid #563207;
+    box-shadow: 1rem 2rem 3rem rgba(0,0,0,0,5);
+    text-shadow: 0.6rem 0.3rem 0.2rem rgba(0,0,0,0.4);
+    cursor: pointer; 
+    opacity:0;
+    visibility: hidden;
+    animation: shineAnimation 1s 1s forwards;
+    position:relative;
+    overflow: hidden;
+}
+
+/* Shine Animation */
+@keyframes shineAnimation{
+    0%{
+        opacity: 0;
+        visibility:hidden;
+    }
+    100%{
+        opacity: 1;
+        visibility: visible;
+    }
+}
+
+.slideshow-button::before{
+    content:"";
+    position:absolute;
+    width: 100%;
+    height: 100%;
+    background:linear-gradient(to right, transparent, rgb(253, 151, 151), transparent);
+    top:0;
+    left:-100%;
+    transform:skewX(-30deg);
+    transition: left 0.5s;
+}
+
+.slideshow-button:hover::before{
+    left:100%;
+}
+
+
+/* Mission Statement Styles*/
+
+.section-mission{
+    width:100%;
+    height:75vh;
+    padding:0 10rem;
+    background:url(img/darkForest.jpg)no-repeat;
+    background-size: cover;
+    position:flex;
+    align-items: center;
+    position:relative;
+}
+
+.section-heading{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 8rem;
+    font-weight:bold;
+    color:rgb(249, 241, 241);
+    margin: 0 auto;
+    padding-top: 5rem;
+    text-align: center;
+    
+}
+
+.section-mission-paragraph{
+    width: 100;
+    position:relative;
+    font-size:5rem;
+    text-shadow: 1rem 1rem 2rem rgba(0,0,0,0.9);
+    color:white;
+    border-top: 0.2rem double rgb(6, 50, 6);
+    border-bottom: 0.2rem double rgb(6, 50, 6);
+    display: flex;
+    flex-direction:column;
+    justify-content: center;
+    align-items: center;
+    text-align:center;
+    padding:1rem;
+}
+
+.fa-quote-left{
+    font-size: 5rem;
+    align-self:flex-start;
+    margin-bottom: 2rem;
+}
+
+.fa-quote-right{
+    font-size: 5rem;
+    align-self:flex-end;
+    margin-bottom: 2rem;
+}
+
+
+.section-video{
+    width:100%;
+    height:125vh;
+    background:url(img/fern.jpg)no-repeat;
+    background-size: cover;
+    position:flex;
+    align-items: center;
+    padding:0 10rem;
+    position:relative;
+}
+
+
+/* Video BTS Styles*/
+
+.vid{
+    width:125rem;
+    height:80rem;
+    position:relative;
+    align-items: center;
+    top:5rem;
+    bottom:1rem;
+    display: block;
+    margin: 0 auto;
+    box-shadow:3rem 3rem 3rem rgba(0,0,0,0.9);
+    overflow: hidden;
+    text-align: center;
+    padding-top: 5rem;
+}
+
+.vid video{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    opacity: 0.25;
+    padding-top: 8rem;
+}
+
+.vid video:hover{
+    opacity:1;
+}
+
+/* Team Styles */
+.section-team{
+    width:100%;
+    height:100vh;
+    background:url(img/darkForest.jpg)no-repeat;
+    background-size: cover;
+    position:flex;
+    align-items: center;
+    padding:0 3rem;
+    position:relative;
+}
+
+.section-heading-team{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 8rem;
+    font-weight:bold;
+    color:rgb(255, 255, 255);
+    margin: 0 auto;
+    text-align: center;
+    padding-top: 3rem;
+}
+
+.section-heading-team-members{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 4rem;
+    color:rgb(20, 118, 7);
+    margin: 0 auto;
+    text-align: center;
+    padding-top: 2rem;
+    padding-bottom: 3rem;
+}
+
+.section-heading-team-members > ul{
+    list-style-type: none;
+    margin:0 auto;
+    padding:0;
+    overflow:hidden;
+    display:inline-block;
+}
+
+.section-heading-team-members > ul > li{
+    float:left;
+    text-align: center;
+    padding:1.5rem;
+}
+
+.image-grid{
+    padding-top:1rem;
+    --gap: 2rem;
+    --num-cols:3;
+    --row-height: 100%;
+    box-sizing:border-box;
+    background-clip:border-box;
+    padding: var(--gap);
+    display:grid;
+    grid-template-columns: repeat(var(--num-cols), 1fr);
+    grid-auto-rows:var(--row-height);
+    gap: var(--gap);
+}
+
+.image-grid > img{
+    width:100%;
+    height:100%;
+    object-fit: cover;
+}
+
+.image-grid > img:hover{
+    opacity: 1;
+	-webkit-animation: flash 1.5s;
+	animation: flash 1.5s;
+    cursor:crosshair;
+}
+
+@-webkit-keyframes flash {
+	0% {
+		opacity: .4;
+	}
+	100% {
+		opacity: 1;
+	}
+}
+@keyframes flash {
+	0% {
+		opacity: .4;
+	}
+	100% {
+		opacity: 1;
+	}
+}
+
+
+/* Contact Styles*/
+.section-contact{
+    width:100%;
+    height:100vh;
+    background:url(img/pebbles.jpg)no-repeat;
+    background-size: cover;
+    display:flex;
+    align-items: center;
+    padding:0 10rem;
+    position:flex;
+}
+
+.section-heading4{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 8rem;
+    font-weight:bold;
+    color:rgb(255, 255, 255);
+}
+
+
+
+.contact-wrapper{
+    width:100%;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+}
+
+.contact-details{
+    display:flex;
+    margin-bottom: 8rem;
+}
+
+.contact-details div{
+    width:25rem;
+    text-align:center;
+    margin:4rem;
+}
+
+.contact-details i{
+    font-size:10rem;
+    color:rgb(76, 180, 48);
+}
+
+.contact-details i:hover{
+    animation: shake 0.5s;
+}
+
+/* Shake Animation */
+
+@keyframes shake {
+    0% { transform: translate(1px, 1px) rotate(0deg); }
+    10% { transform: translate(-1px, -2px) rotate(-1deg); }
+    20% { transform: translate(-3px, 0px) rotate(1deg); }
+    30% { transform: translate(3px, 2px) rotate(0deg); }
+    40% { transform: translate(1px, -1px) rotate(1deg); }
+    50% { transform: translate(-1px, 2px) rotate(-1deg); }
+    60% { transform: translate(-3px, 1px) rotate(0deg); }
+    70% { transform: translate(3px, 1px) rotate(-1deg); }
+    80% { transform: translate(-1px, -1px) rotate(1deg); }
+    90% { transform: translate(1px, 2px) rotate(0deg); }
+    100% { transform: translate(1px, -2px) rotate(-1deg); }
+  }
+
+.contact-details h3{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size:2.5rem;
+    margin: 2rem 0;
+    color: white;
+}
+
+.contact-details p{
+    font-size: 1.6rem;
+    color:rgb(215, 139, 15);
+}
+
+.contact-details p > a{
+    color:rgb(215, 139, 15);
+}
+
+.address p{
+    color:rgb(215, 139, 15);
+}
+
+.phone p > h3:hover{
+    color:rgba(231, 255, 12);
+}
+
+
+/* end with .com*/
+.contact-details p >a[href$=".com"]{
+    color:rgb(255, 157, 0);
+}
+
+/* any phone number "tel"*/
+.contact-details p >a[href*="tel"] {
+    color: rgb(244, 234, 89);
+}
+
+
+/*Footer Styles */
+
+.footer{
+    width:100%;
+    height:12rem;
+    background-color:rgba(34, 33, 33, 0.874);
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    padding:0 10rem;
+}
+
+
+.footer-navigation a{
+    font-family:'Times New Roman', Times, serif;
+    color: white;
+    font-size: 1.8rem;
+    margin-right: 0.5rem;
+    letter-spacing: .2rem;
+    transition: color 0.3s;
+}
+
+.footer-navigation a:hover{
+    color: hsla(26,93%,78%,1);
+}
+
+
+
+
+
+/* Last Modified Date */
+.update{
+    font-size: 2rem;
+    color: #563207;
+}
+
+/*Menu Styles */
+.section-menu{
+    width:100%;
+    height:100vh;
+    background:url(img/blackFern.jpg)no-repeat;
+    background-size: cover;
+    position:flex;
+    align-items: center;
+    padding:5rem 0;
+    position:relative;
+}
+
+.section-heading-menu{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 8rem;
+    font-weight:bold;
+    color:rgb(255, 255, 255);
+    margin: 0 auto;
+    text-align: center;
+    padding-top: 3rem;
+}
+
+.food-img{
+    width:30vw;
+    height:15vw;
+    object-fit: cover;
+    box-shadow: 0.5rem 0.5rem 0.1rem rgb(84, 239, 108);
+    transition: all 0.8s;
+}
+
+.gallery-menu-link:hover .food-img{
+    box-shadow: 1rem 1rem 0.1rem rgb(84, 239, 108);
+    opacity:0.8;
+    filter: blur(0.9rem);
+    transform: scale(1.07);
+}
+
+.gallery-menu{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-evenly;
+    margin-top: 5rem;
+}
+
+
+.food-name{
+    position:absolute;
+    top: 3rem;
+    left: 3rem;
+    font-size: 2rem;
+    font-weight: 10000;
+    letter-spacing: 0.1rem;
+    color:rgb(255, 233, 174);
+    width:0;
+    overflow:hidden;
+    transition: width 0.4s;
+}
+
+.food-description{
+    position:absolute;
+    bottom: 5vw;
+    left:2rem;
+    width:70%;
+    font-size:1.5rem;
+    font-weight: 500;
+    letter-spacing: 0.1rem;
+    color:rgb(255, 198, 43);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 2s;
+}
+
+.gallery-menu-link:hover .food-description{
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 1s;
+}
+
+.gallery-menu-link{
+    position:relative;
+    margin: 3rem 1rem;
+}
+
+
+.gallery-menu-link::before{
+    content:"";
+    position:absolute;
+    width:0.2rem;
+    height:0;
+    background-color: rgb(84, 239, 108);
+    top:2vw;
+    left:80%;
+    transition: height .4s;
+}
+
+.gallery-menu-link::after{
+    content:"";
+    position:absolute;
+    width:0;
+    height:0.2rem;
+    background-color: rgb(84, 239, 108);
+    top:30%;
+    left:2rem;
+    transition: width .4s;
+    
+}
+
+.gallery-menu-link:hover:before{
+    height:80%;
+}
+
+.gallery-menu-link:hover:after{
+    width:95%;
+}
+
+.gallery-menu-link:hover .food-name{
+    width: 100%;
+    transition: width 1.5s, 1.8s;
+}
+
+/* Review Styles */
+
+.section-review{
+    width:100%;
+    height:100vh;
+    background:url(img/forest.jpg)no-repeat;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    
+}
+
+.section-heading-review{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 8rem;
+    font-weight:bold;
+    color:rgb(255, 255, 255);
+    border-color: rgb(255, 255, 255);
+    box-shadow: none;
+    margin: 0 auto;
+    text-align: center;
+    padding-top: 1rem;
+}
+   
+
+.review-form{
+    width:30rem;
+    flex-direction: column;
+}
+
+.review-form textarea{
+    height:10rem;
+    max-height: 15rem;
+    max-width: 100%;
+}
+
+.review-form input, .review-form textarea{
+    width:100%;
+    padding: 2rem;
+    margin: 0.5rem 0;
+    background-color: hsla(116,76%,87%,1);
+    font-size:1.5rem;
+    border: 0.2rem solid rgb(2, 78, 8);
+    color:black;
+
+}
+
+
+.review-form text:required{
+    background-color:hsla(116,76%,87%,1);
+}
+
+.review-form .review-form-btn{
+    background-color: rgb(162, 18, 18);
+    color:rgb(245, 245, 245);
+    font-weight: bold;
+    cursor:pointer;
+}
+
+.review-form .review-form-btn:hover, 
+.review-form .review-form-btn:active,
+.review-form .review-form-btn:focus{
+    cursor:pointer;
+}
+
+input:required:invalid {
+    border: 1px solid rgb(248, 6, 6);
+    background-color: #ffcccc;
+  }
+
+
+input:required:valid {
+border: 1px solid rgb(0, 128, 0);
+}
+
+
+
+/* Responsive Details */
+
+@media(max-width:2560px){
+    .vid{
+        width:90rem;
+        height:60rem;
+    }
+}
+    
+@media(max-width:2000px){
+/* Default */
+}
+
+@media(max-width: 1700px){
+    .vid{
+        width:80rem;
+        height:50rem;
+    }
+
+}
+
+
+
+
+
+@media(max-width:1600px){
+    .section-mission-paragraph{
+        font-size: 4rem;
+        width: 50;
+    }
+    
+    .contact-details h3{
+        font-size:5rem;
+        margin: 3rem 0;
+        
+    }
+    .contact-details p{
+        font-size: 3rem;
+    }
+}
+
+
+@media(max-width: 1500px){
+    .vid{
+        width:70rem;
+        height:55rem;
+    }
+
+}
+
+@media(max-width:1400px){
+
+    
+    .section-mission{
+        height:60vh;
+    }
+    .section-mission-paragraph{
+        font-size: 3rem;
+        width: 50;
+    }
+
+    .contact-details h3{
+        font-size:3rem;
+        margin: 3rem 0;
+        
+    }
+    .contact-details p{
+        font-size: 2rem;
+    }
+    .contact-details i{
+        font-size:8rem;
+    }
+    .section-heading{
+        font-size: 6rem;
+    }
+    .section-heading4{
+        font-size: 6rem;
+    }
+    .footer{
+        height:11rem;
+    }
+    .footer-navigation a{
+    font-size: 2.5rem;
+    margin-right: 1.5rem;
+    }
+    .social{
+        font-size:2.5rem;
+    }
+}
+
+@media(max-width:1300px){
+    .section-home{
+        height:140vh;
+    }
+
+    .section-contact{
+        flex-direction:column;
+    }
+    .section-heading4{
+        margin-top: 8rem;
+    }
+    .contact-details{
+        flex-direction: column;
+    }
+
+    .footer-navigation a{
+        flex-direction: column;
+    }
+
+    .section-contact{
+        height:150vh;
+    }
+
+    .section-mission-paragraph{
+        font-size: 2rem;
+        width: 50;
+    }
+
+    .fa-quote-left{
+        font-size: 3rem;
+        align-self:flex-start;
+        margin-bottom: 2rem;
+    }
+    
+    .fa-quote-right{
+        font-size: 3rem;
+        align-self:flex-end;
+        margin-bottom: 2rem;
+    }
+
+
+}
+
+
+@media(max-width:1000px){
+    .section-home{
+        height:140vh;
+    }
+
+    .section-contact{
+        flex-direction:column;
+    }
+    .section-heading4{
+        margin-top: 8rem;
+    }
+    .contact-details{
+        flex-direction: column;
+    }
+
+    .footer-navigation a{
+        flex-direction: column;
+    }
+
+    .section-contact{
+        height:150vh;
+    }
+
+    .section-mission-paragraph{
+        font-size: 2rem;
+        width: 50;
+    }
+
+    .fa-quote-left{
+        font-size: 3rem;
+        align-self:flex-start;
+        margin-bottom: 2rem;
+    }
+    
+    .fa-quote-right{
+        font-size: 3rem;
+        align-self:flex-end;
+        margin-bottom: 2rem;
+    }
+
+    .section-heading{
+        font-size: 5rem;
+        
+    }
+
+    .section-heading-team{
+        font-size: 5rem;
+    }
+
+    .section-heading-menu{
+        font-size: 5rem;
+    }
+
+    .section-heading-review{
+        font-size: 5rem;
+    }
+
+    .footer{
+        padding:0 4rem;
+    }
+    .footer-navigation a{
+        font-size: 1.4rem;
+        
+    }
+    
+}
+
+@media(max-width:1000px){
+    .navigation-link{
+        font-size: 3rem;
+    }  
+
+
+}
+
+@media(max-width: 900px){
+    .vid{
+        width:60rem;
+        height:45rem;
+    }
+
+}
+
+
+@media(max-width:800px){
+    .slideshow-heading span{
+        font-size:5rem;
+    }
+
+    .slideshow-heading{
+        margin-top: 10rem;
+        height: 10rem;
+        /*3D environment*/
+        perspective: 30rem;
+    }
+
+    .slideshow-paragraph, .slideshow-paragraph2, .slideshow-paragraph3{
+        font-size: 0.1rem;
+    }
+
+    .navigation-link{
+        font-size: 2rem;
+        margin:0.75rem 0;
+    }  
+    .navigation-list{
+        top:15%;
+        
+    }
+
+    .vid{
+        width:50rem;
+        height:35rem;
+    }
+
+    
+}
+
+@media(max-width: 700px){
+    .vid{
+        width:40rem;
+        height:35rem;
+    }
+    
+}
+
+
+
+@media(max-width:650px){
+    .section-mission-paragraph{
+        font-size: 1.5rem;
+        width: 40;
+    }
+
+    .fa-quote-left{
+        font-size: 2rem;
+        align-self:flex-start;
+        margin-bottom: 1rem;
+    }
+    
+    .fa-quote-right{
+        font-size: 2rem;
+        align-self:flex-end;
+        margin-bottom: 1rem;
+    }
+
+    .section-heading-team-members{
+        font-size: 2rem;
+    }
+
+}
+
+
+@media(max-width:600px){
+    .slideshow-heading span{
+        font-size:3rem;
+    }
+
+    .slideshow-heading{
+        margin-top: 8rem;
+        height: 10rem;
+        /*3D environment*/
+        perspective: 30rem;
+    }
+
+    .slideshow-paragraph, .slideshow-paragraph2, .slideshow-paragraph3{
+        font-size: 0.1rem;
+        font-weight:100;
+    }
+
+        .slideshow-paragraph::first-letter,
+        .slideshow-paragraph2::first-letter{
+        font-size:3rem;
+        color:rgb(238, 140, 42);
+    }
+
+        .slideshow-paragraph3::first-letter{
+        font-size:3rem;
+        color:rgb(255, 125, 69);
+    }
+
+    .slideshow-button{
+        width:20rem;
+        height:4rem;
+        font-size: 1.6rem;
+    }
+
+    .logo span{
+        font-size:1.9rem;
+    }
+
+    .logo{
+        top: 1.5rem;
+        left: 3rem;
+    }
+
+    .navigation-link{
+        font-size: 1.5rem;
+        margin:0.75rem 0;
+    }  
+    .navigation-list{
+        top:20%;
+        
+    }
+
+    .vid{
+        width:30rem;
+        height:30rem;
+    }
+
+    
+}
+
+@media(max-width:475px){
+    .section-mission-paragraph{
+        font-size: 1rem;
+        width: 40;
+    }
+
+    .fa-quote-left{
+        font-size: 1.5rem;
+        align-self:flex-start;
+        margin-bottom: 0.8rem;
+    }
+    
+    .fa-quote-right{
+        font-size: 1.5rem;
+        align-self:flex-end;
+        margin-bottom: 0.8rem;
+    }
+
+    .section-heading{
+        font-size: 3rem;
+        
+    }
+
+    .section-heading-team{
+        font-size: 3rem;
+    }
+
+    .section-heading-menu{
+        font-size: 3rem;
+    }
+
+    .section-heading-review{
+        font-size: 3rem;
+    }
+
+    .section-heading4{
+        font-size: 3rem;
+    }
+
+    .contact-details i{
+        font-size:5rem;
+    }
+
+    .contact-details h3{
+        font-size:1.5rem;
+        margin: 1rem 0;
+        
+    }
+
+    .contact-details p{
+        font-size: 0.8rem;
+    }
+
+    .section-team{
+        height:80vh;
+    }
+
+
+
+
+    .footer{
+        padding:0 2rem;
+    }
+    .footer-navigation a{
+        font-size: 1rem;
+        
+    }
+
+    .food-img{
+        width:45vw;
+        height:30vw;
+    }
+
+    .section-menu{
+        width:100%;
+        height:150vh;
+    }
+
+    .footer{
+        height:9rem;
+    }
+
+    .navigation-link{
+        font-size: 1.25rem;
+        margin:0.75rem 0;
+    }  
+    .navigation-list{
+        top:25%;
+        
+    }
+    
+    .section-contact{
+        height:100vh;
+    }
+
+    .vid{
+        width:25rem;
+        height:30rem;
+    }
+
+
+}
+
+@media(max-width:425px){
+    .slideshow-heading span{
+        font-size:2rem;
+    }
+
+    .slideshow-heading{
+        margin-top: 9rem;
+        height: 10rem;
+        /*3D environment*/
+        perspective: 30rem;
+    }
+
+    .footer-navigation a{
+        font-size: 0.7rem;
+        
+    }
+
+    .section-menu{
+        width:100%;
+        height:100vh;
+    }
+
+    .food-img{
+        width:35vw;
+        height:20vw;
+    }
+
+    .vid{
+        width:20rem;
+        height:25rem;
+    }
+}
+
+
